@@ -10,10 +10,10 @@ const NewModuleButton = () => {
     CalendarModule.createCalendarEvent(
       'Party',
       'My House',
-      (error, eventId) => {
-        if (error) {
-          console.error(`Error found! ${error}`);
-        }
+      error => {
+        console.error(`Error found! ${error}`);
+      },
+      eventId => {
         console.log(`event id ${eventId} returned`);
       },
     );

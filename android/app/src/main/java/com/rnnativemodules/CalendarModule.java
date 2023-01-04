@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.HashMap;
 import android.util.Log;
 import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.Promise;
 
 public class CalendarModule extends ReactContextBaseJavaModule {
     // add to CalendarModule.java
@@ -18,12 +19,18 @@ public class CalendarModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void createCalendarEvent(String name, String location, Callback callBack) {
+    public void createCalendarEvent(String name, String location, Callback myFailureCallback, Callback mySuccessCallback) {
         Log.d("CalendarModule", "Create event called with name: " + name
                 + " and location: " + location);
 
         Integer eventId = 23;
-        callBack.invoke(null, eventId);
+        String error = "there is error";
+
+        if (name != null && location != null) {
+            mySuccessCallback.invoke(eventId);
+        } else {
+            myFailureCallback.invoke(error);
+        }
     }
 
 
