@@ -19,17 +19,17 @@ public class CalendarModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void createCalendarEvent(String name, String location, Callback myFailureCallback, Callback mySuccessCallback) {
-        Log.d("CalendarModule", "Create event called with name: " + name
-                + " and location: " + location);
+    public void createCalendarEvent(String name, String location, Promise promise) {
+        try {
+            Integer eventId = 23;
+            if(name != null && location != null) {
+                promise.resolve(eventId);
+            } else {
+                promise.reject("Create Event Error","error");
+            }
 
-        Integer eventId = 23;
-        String error = "there is error";
-
-        if (name != null && location != null) {
-            mySuccessCallback.invoke(eventId);
-        } else {
-            myFailureCallback.invoke(error);
+        } catch(Exception e) {
+            promise.reject("Create Event Error", e);
         }
     }
 
