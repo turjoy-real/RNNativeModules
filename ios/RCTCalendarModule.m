@@ -14,10 +14,15 @@
 
 // To export a module named RCTCalendarModule
 
-RCT_EXPORT_METHOD(createCalendarEvent:(NSString *)name location:(NSString *)location)
+
+RCT_EXPORT_METHOD(createCalendarEvent:(NSString *)title location:(NSString *)location callback: (RCTResponseSenderBlock)callback)
 {
- RCTLogInfo(@"Pretending to create an event %@ at %@", name, location);
+  NSInteger eventId = 32;
+  callback(@[@(eventId)]);
+
+ RCTLogInfo(@"Pretending to create an event %@ at %@", title, location);
 }
+
 
 - (NSDictionary *)constantsToExport
 {
