@@ -3,8 +3,10 @@ import {Button} from 'react-native';
 import CalendarModule from '../modules/CalendarModule';
 
 const NewModuleButton = () => {
+  const {DEFAULT_EVENT_NAME} = CalendarModule.getConstants();
+
   const onPress = () => {
-    CalendarModule.createCalendarEvent('testName', 'testLocation');
+    console.log(DEFAULT_EVENT_NAME);
   };
 
   return (
